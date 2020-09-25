@@ -1,6 +1,6 @@
 .manageCard{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(25vw,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20vw,1fr));
     grid-gap: 10px;
     margin: 20px;
 }

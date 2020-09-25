@@ -1,20 +1,20 @@
 import http from "./CrudApiConnect";
 
 
-const get = id => {
-  return http.get(`/data/${id}`);
+const get = () => {
+  return http.get();
 };
 
 const create = data => {
-  return http.post("/data", data);
+  return http.post("", data);
 };
 
 const update = (id, data) => {
-  return http.put(`/data/${id}`, data);
+  return http.put(`/${id}`, data);
 };
 
 const remove = id => {
-  return http.delete(`/data/${id}`);
+  return http.delete(`/${id}`);
 };
 
 
