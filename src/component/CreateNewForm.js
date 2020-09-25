@@ -5,39 +5,51 @@ import FormInput from "./FormInput";
 
 class CreateNewForm extends Component {
   state = {
-    card_question: "",
-    card_answer: "",
+    card_question: this.props.question,
+    card_answer: this.props.answer,
   };
 
   addClick = () => {
-    this.props.submitNewCard(this.state)
-  }
+    this.props.submitCard(this.state);
+  };
 
-  updateQuestionState = (event) =>{
-    const value = event.target.value;
+  updateQuestionState = (value) => {
     this.setState({ card_question: value });
-  }
+  };
 
-  updateAnswerState = (event) => {
-    const value = event.target.value;
+  updateAnswerState = (value) => {
     this.setState({ card_answer: value });
-  }
+  };
 
   render() {
     return (
       <div>
         <FormTitle text="Question" />
-        <FormInput update={this.updateQuestionState} />
-        <FormTitle text="Answer" />
-        <FormInput update={this.updateAnswerState} />
-        <Button
-          Button
-          isClicked={this.addClick}
-          icon={<i className="fas fa-plus"></i>}
+        <FormInput
+          ref={this.answerInput}
+          update={this.updateQuestionState}
+          value={this.state.card_question}
         />
+        <FormTitle text="Answer" />
+        <FormInput
+          update={this.updateAnswerState}
+          value={this.state.card_answer}
+        />
+        <div className="btn">
+          <Button
+            Button
+            isClicked={this.addClick}
+            icon={<i className="fas fa-plus"></i>}
+          />
+        </div>
       </div>
     );
   }
 }
+
+CreateNewForm.defaultProps = {
+  question: "",
+  answer: "",
+};
 
 export default CreateNewForm;

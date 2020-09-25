@@ -17,14 +17,24 @@ class ManageCards extends Component {
   };
 
   renderCards = () => {
-    const cardQuestions = this.state.existingForms.map(
-      (card) => {
-        return (
-            <CardInterface key={card.id}>
-                <ExistingForm cardQuestion={card.card_question} cardAnswer={card.card_answer}/>
-            </CardInterface>
-          )
-      }
+    let cardQuestions = this.state.existingForms.map((card) => {
+      return (
+        <CardInterface key={card.id}>
+          <ExistingForm
+            id={card.id}
+            key={card.id}
+            updateCard={this.updateExistCard}
+            deleteCard={this.deleteExistCard}
+            cardQuestion={card.card_question}
+            cardAnswer={card.card_answer}
+          />
+        </CardInterface>
+      );
+    });
+    cardQuestions.unshift(
+      <CardInterface key="newCard">
+        <CreateNewForm submitCard={this.submitNewCard} question="" answer="" />
+      </CardInterface>
     );
     return cardQuestions;
   };
@@ -32,6 +42,16 @@ class ManageCards extends Component {
   submitNewCard = async (data) => {
     await DataService.create(data);
     this.getUpdatedInformation();
+  };
+
+  updateExistCard = async (id, data) => {
+    await DataService.update(id, data);
+    await this.getUpdatedInformation();
+  };
+
+  deleteExistCard = async (id) => {
+    await DataService.remove(id);
+    await this.getUpdatedInformation();
   }
 
   componentDidMount = async () => {
@@ -39,14 +59,7 @@ class ManageCards extends Component {
   };
 
   render() {
-    return (
-      <div className="manageCard">
-        <CardInterface>
-          <CreateNewForm submitNewCard={this.submitNewCard}/>
-        </CardInterface>
-        {this.renderCards()}
-      </div>
-    );
+    return <div className="manageCard">{this.renderCards()}</div>
   }
 }
 
