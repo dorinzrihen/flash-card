@@ -3,6 +3,7 @@ import CardInterface from "./component/CardInterface";
 import CreateNewForm from "./component/CreateNewForm";
 import ExistingForm from "./component/ExistingForm";
 import DataService from "./api/DataService";
+import Loader from './component/Loader';
 import "./style/ManageCards.css";
 
 class ManageCards extends Component {
@@ -19,7 +20,7 @@ class ManageCards extends Component {
     let cardQuestions = this.state.existingForms.map((card) => {
       return (
         <CardInterface key={card.id}>
-          <ExistingForm
+          <ExistingForm className="card-inside"
             id={card.id}
             key={card.id}
             updateCard={this.updateExistCard}
@@ -58,7 +59,11 @@ class ManageCards extends Component {
   };
 
   render() {
-    return <div className="manageCard">{this.renderCards()}</div>
+    return <div>
+      {this.state.existingForms.length > 0 ? <div className="manageCard">{this.renderCards()}</div> : <Loader/>}
+</div>
+    
+    
   }
 }
 

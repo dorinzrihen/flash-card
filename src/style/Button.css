@@ -8,6 +8,12 @@
     background-color: #6e6e6e;
     cursor: pointer;
     position: absolute;
-    top: 200%;
+    top: 300%;
     transition: top 1s;
+}
+
+
+.square-btn{
+    padding: 5px;
+    margin: 5px;
 }

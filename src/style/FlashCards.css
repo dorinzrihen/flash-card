@@ -1,0 +1,13 @@
+.flash-cards{
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-place{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

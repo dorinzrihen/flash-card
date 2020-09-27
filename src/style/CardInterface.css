@@ -1,6 +1,6 @@
 .CardInterface{
     padding: 20px;
-    background-color: violet;
+    background-image: linear-gradient(rgba(128, 27, 141, 0.596), rgba(99, 181, 219, 0.596));
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,7 +9,7 @@
 
 .btn{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     height: 30px;
     margin-top: 10px;
     position: relative;

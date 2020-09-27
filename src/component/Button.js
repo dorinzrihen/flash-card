@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import "../style/Button.css";
 
 function Button(props) {
   function clickHandler() {
@@ -6,11 +7,9 @@ function Button(props) {
   }
 
   return (
-    <div>
-      <button onClick={clickHandler}>
-        {props.title}
-      </button>
-    </div>
+    <button className="square-btn" onClick={clickHandler}>
+      {props.title}
+    </button>
   );
 }
 

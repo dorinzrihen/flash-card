@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Button from "./Button";
 import FormInfoText from "./FormInfoText";
+import "../style/FlashCards.css";
 
 class RevealAnswer extends Component {
   yesClick = () => {
@@ -15,8 +16,10 @@ class RevealAnswer extends Component {
     return (
       <div>
         <FormInfoText text="Did you get it right?" />
-        <Button title="yes" isClicked={this.yesClick} />
-        <Button title="no" isClicked={this.noClick} />
+        <div className="btn-place">
+          <Button title="yes" isClicked={this.yesClick} />
+          <Button title="no" isClicked={this.noClick} />
+        </div>
       </div>
     );
   }
